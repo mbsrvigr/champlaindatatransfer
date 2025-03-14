@@ -1,0 +1,12 @@
+host: webdb.uvm.edu
+writer: mbsr_writer
+w_password: 3hWq8LDg,:*teyLHBN]<
+reader: mbsr_reader
+r_password: gXAT<}qTi_O!*]jBX5L<
+admin: mbsr_admin
+a_password: :}y8bBX8g*W}YL7V4Ogp
+database: MBSR_datatransfer
+web_ca: /users/m/b/mbsr/webdbcert/webdb-cacert.pem
+loc_ca: /Users/plharvey/OneDrive - UVM Larner College of Medicine/Documents/Projects/Ramiro_MBSR/private/webdb-cacert.pem
+vacc_un: mbsr@vacc-user3.uvm.edu
+vacc_pw: vigrBSR2025!
