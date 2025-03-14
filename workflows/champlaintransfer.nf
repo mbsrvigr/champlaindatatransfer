@@ -3,6 +3,7 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
+include { TRANSFER_DATA          } from '../modules/local/transferData/transferData.nf'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_champlaintransfer_pipeline'
@@ -20,6 +21,10 @@ workflow CHAMPLAINTRANSFER {
     main:
 
     ch_versions = Channel.empty()
+
+    ch_samplesheet.view()
+    dbinfo = file(params.dbinfo)
+    TRANSFER_DATA(ch_samplesheet,dbinfo)
 
     //
     // Collate and save software versions
