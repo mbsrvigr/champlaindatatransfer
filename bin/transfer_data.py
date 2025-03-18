@@ -152,8 +152,8 @@ def target_find(source_dir: str, target_base_dir: str):
         exit(1)
     target_dir = target_base_dir + "/" + os.path.basename(source_dir)
     if os.path.exists(target_dir):
-        print(f"Error: Target directory '{target_dir}' already exists.")
-        exit(1)
+        print(f"Warning: Target directory '{target_dir}' already exists.")
+        return target_dir
     else:
         return target_dir
 
