@@ -5,7 +5,10 @@ process TRANSFER_DATA {
     input:
     tuple val(meta), val(info)
     path "dbinfo.yaml"
-    
+
+    output:
+    tuple val(meta), val(info), emit: info
+
     when:
     task.ext.when == null || task.ext.when
 
