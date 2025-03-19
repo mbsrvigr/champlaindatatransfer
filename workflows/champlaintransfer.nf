@@ -4,6 +4,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 include { TRANSFER_DATA          } from '../modules/local/transferData/transferData.nf'
+include { UPDATEDB               } from '../modules/local/updatedb/updatedb.nf'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_champlaintransfer_pipeline'
@@ -23,9 +24,10 @@ workflow CHAMPLAINTRANSFER {
     ch_versions = Channel.empty()
 
     ch_samplesheet.view()
-    dbinfo = file(params.dbinfo)
-    TRANSFER_DATA(ch_samplesheet,dbinfo)
-
+    dbinfo = params.dbinfo
+    ch_source = TRANSFER_DATA(ch_samplesheet,dbinfo)
+    UPDATEDB(ch_source,dbinfo)
+    
     //
     // Collate and save software versions
     //
