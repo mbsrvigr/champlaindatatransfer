@@ -241,9 +241,9 @@ def source_to_target(
 
     file_trans = source_meta(file_trans, path_in)
     
-    record_trans(log_file, file_trans)
+#    record_trans(log_file, file_trans)
 
-    source_del(True, path_in, True)
+#    source_del(True, path_in, True)
 
 
 def main():
