@@ -233,9 +233,13 @@ def source_to_target(
     try:
         print(f"Copying {path_in} to {path_out}")
         shutil.copytree(path_in, path_out)
-    except FileExistsError:
-        print(f"Directory {path_out} already exists." + "\n")
-        pass
+    except RuntimeError as error:
+        print(error)
+        print("The linux_interaction() function wasn't executed.")
+
+#except FileExistsError:
+#        print(f"Directory {path_out} already exists." + "\n")
+#        pass
 
     compute_md5_for_dir(path_in, path_out)
 
